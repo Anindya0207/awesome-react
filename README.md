@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Powered by [Styled system](https://github.com/styled-system/styled-system) and [Styled components](https://styled-components.com/)
+- Used [@redux-toolkit](https://redux-toolkit.js.org/) for state management
 
 ## Available Scripts
 
