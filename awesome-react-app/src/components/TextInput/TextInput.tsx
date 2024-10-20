@@ -42,9 +42,9 @@ const TextInput = React.forwardRef((props: TextInpoutProps, ref) => {
     }
   };
   return (
-    <FlexRow justifyContent="space-between">
+    <FlexRow>
       <label htmlFor={id}>Enter some value : </label>
-      <FlexColumn>
+      <FlexColumn ml={3}>
         <input
           name={id}
           id={id}

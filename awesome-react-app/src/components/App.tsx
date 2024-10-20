@@ -11,7 +11,10 @@ import './App.css';
 import { fetchData } from '../actions';
 import { Flex1, FlexColumn, FlexRow } from '../Flex';
 import { Button, Text } from '../BaseElements';
-import TabExample from './Tabs/TabExample';
+
+const Tabs = lazy(() => import('./Tabs'));
+const Polling = lazy(() => import('./Polling'));
+const TextInput = lazy(() => import('./TextInput'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -19,7 +22,11 @@ type Props = ReduxProps;
 const Fallback = () => <Text>Loading...</Text>;
 
 const App: React.FC<Props> = (props) => {
-  return <TabExample />;
+  return (
+    <Suspense fallback={<Fallback />}>
+      <Tabs />
+    </Suspense>
+  );
 };
 
 const mapStateToProps = (state: any) => ({

@@ -2,14 +2,16 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Flex1, FlexColumn } from '../../Flex';
 
 interface Props {
-  baseUrl: string;
-  frequency: number;
+  baseUrl?: string;
+  frequency?: number;
 }
 
 const Polling: React.FC<Props> = (props) => {
-  const { baseUrl, frequency = 3000 } = props;
+  const {
+    baseUrl = 'https://jsonplaceholder.typicode.com/posts',
+    frequency = 3000,
+  } = props;
   const [value, setValue] = useState<any>([]);
-  const [loading, setLoading] = useState<boolean>(false);
   const [url, setUrl] = useState<string>(baseUrl);
   const abortControllerRef = useRef<AbortController | null>(null);
   let interval = useRef<any>(0);
@@ -39,23 +41,20 @@ const Polling: React.FC<Props> = (props) => {
 
   const poll = useCallback(async () => {
     try {
-      setLoading(true);
       abortControllerRef.current = new AbortController();
       const response = await fetch(url, {
         signal: abortControllerRef.current?.signal,
       });
       const res = await response.json();
       setValue(res);
-      setLoading(false);
     } catch {
-      setLoading(false);
       // do nothing
     }
   }, []);
   return (
     <Flex1 flexDirection="column">
       <FlexColumn>
-        <table style={{width: '100vw', padding: '30px' }}>
+        <table style={{ padding: '30px' }}>
           <thead>
             <th>ID</th>
             <th>User ID</th>
