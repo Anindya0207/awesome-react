@@ -15,6 +15,7 @@ import { Button, Text } from '../BaseElements';
 const Tabs = lazy(() => import('./Tabs'));
 const Polling = lazy(() => import('./Polling'));
 const TextInput = lazy(() => import('./TextInput'));
+const ModalExample = lazy(() => import('./Modal'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -24,7 +25,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <Tabs />
+      <ModalExample />
     </Suspense>
   );
 };
