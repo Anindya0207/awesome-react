@@ -1,34 +1,54 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import './App.css';
 import { fetchData } from '../actions';
-import { Flex1, FlexColumn } from '../Flex';
+import { Flex1, FlexColumn, FlexRow } from '../Flex';
 import { Button, Text } from '../BaseElements';
-import TextInputWrapper from './TextInput';
-import useLocalStorage from '../hooks/useLocalStorage';
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
+
+const Polling = lazy(() => import('./Polling'));
+const TextInput = lazy(() => import('./TextInput'));
 
 interface ImperativeProps {
   isValid: () => boolean;
   getValue: () => string;
 }
-const App: React.FC<Props> = (props) => {
-  const [value, setValue] = useLocalStorage('someValue');
-  useEffect(() => {
-    console.log('LocalstorageUpdated', value);
-  }, [value]);
 
-  const changeLocalStorage = () => {
-    const random = Math.floor(Math.random() * 100) + 1;
-    setValue(random);
-  };
+const Fallback = () => <Text>Loading...</Text>;
+
+const App: React.FC<Props> = (props) => {
+  const [view, setView] = useState('');
   return (
-    <Flex1>
-      <FlexColumn>
-        <Text py={4}> Hey this is an awesome app built by Anindya</Text>
-        <Button onClick={changeLocalStorage}>Submit</Button>
+    <Flex1 flexDirection="column">
+      <FlexColumn flex={1}>
+        <FlexRow justifyContent ="center" flex={1}>
+          <Button onClick={() => setView('POLLING')}>Show Polling</Button>
+          <Button onClick={() => setView('TEXT_INPUT')}>Show TextInoput</Button>
+        </FlexRow>
+      </FlexColumn>
+      <FlexColumn my={30}>
+        {view == 'POLLING' && (
+          <Suspense fallback={<Fallback />}>
+            <Polling
+              baseUrl={'https://jsonplaceholder.typicode.com/posts'}
+              frequency={3000}
+            />
+          </Suspense>
+        )}
+        {view == 'TEXT_INPUT' && (
+          <Suspense fallback={<Fallback />}>
+            <TextInput />
+          </Suspense>
+        )}
       </FlexColumn>
     </Flex1>
   );
@@ -36,7 +56,6 @@ const App: React.FC<Props> = (props) => {
 
 const mapStateToProps = (state: any) => ({
   data: state.data,
-  asyncStatus: state.data,
 });
 
 const mapDispatchToProps = {
