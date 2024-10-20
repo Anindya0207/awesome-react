@@ -31,6 +31,7 @@ const Select: React.FC<SelectProps> = (props) => {
   const [filteredOptions, setFilteredOptions] = useState<any>(sortedOptions);
   const [showOptions, setShowOptions] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<any>(null);
+  const [inputVal, setInputVal] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -49,6 +50,7 @@ const Select: React.FC<SelectProps> = (props) => {
         if (!isValidClick) {
           setShowOptions(false);
         }
+        setInputVal('');
       },
       true,
     );
@@ -57,6 +59,7 @@ const Select: React.FC<SelectProps> = (props) => {
     ev.preventDefault();
     setShowOptions(true);
     onFocus && onFocus(ev);
+    setInputVal('');
   };
   const handleOptionSelect = (option: any) => {
     if (multiple) {
@@ -80,6 +83,8 @@ const Select: React.FC<SelectProps> = (props) => {
       );
       setShowOptions(false);
     }
+    setInputVal('');
+    inputRef.current?.focus();
   };
   const handleOptionDelete = (option: any) => {
     let updatedSelectedOptions = [...(selectedOption || [])].filter(
@@ -88,6 +93,7 @@ const Select: React.FC<SelectProps> = (props) => {
     setSelectedOption(() => updatedSelectedOptions);
     setFilteredOptions((prev: any) => [option, ...(prev || [])]);
     setShowOptions(true);
+    setInputVal('');
     onChange && onChange(updatedSelectedOptions);
   };
   const clearInput = () => {
@@ -97,6 +103,32 @@ const Select: React.FC<SelectProps> = (props) => {
       multiple ? onChange([]) : onChange(null);
     }
     setFilteredOptions(sortedOptions);
+  };
+  const handleInputChange = (ev: any) => {
+    const val = ev.target?.value;
+    const firstLevelFilter = sortedOptions.filter(
+      (p: any) =>
+        ![...(selectedOption || [])].find(
+          (k) => k[valueAccessor] == p[valueAccessor],
+        ),
+    );
+    let updatedSelectedOptions = [...(firstLevelFilter || [])].filter(
+      (p) =>
+        (p[labelAccessor] || '').toLowerCase().indexOf(val.toLowerCase()) > -1,
+    );
+    setInputVal(val);
+    setFilteredOptions(updatedSelectedOptions);
+  };
+  const handleInputChangeSingle = (ev: any) => {
+    const val = ev.target?.value;
+    setSelectedOption(null);
+    onChange && onChange(null);
+    let updatedSelectedOptions = [...(sortedOptions || [])].filter(
+      (p) =>
+        (p[labelAccessor] || '').toLowerCase().indexOf(val.toLowerCase()) > -1,
+    );
+    setInputVal(val);
+    setFilteredOptions(updatedSelectedOptions);
   };
   return (
     <Flex1
@@ -123,6 +155,7 @@ const Select: React.FC<SelectProps> = (props) => {
               id={`select-input-${id}`}
               type="text"
               name={id}
+              value={inputVal}
               autoComplete="false"
               style={{
                 border: 'none',
@@ -134,6 +167,7 @@ const Select: React.FC<SelectProps> = (props) => {
                 background: 'transparent',
               }}
               onFocus={handleFocus}
+              onChange={handleInputChangeSingle}
             />
             {selectedOption && (
               <Box
@@ -184,16 +218,17 @@ const Select: React.FC<SelectProps> = (props) => {
               id={`select-input-${id}`}
               type="text"
               name={id}
+              value={inputVal}
               autoComplete="false"
               style={{
                 border: 'none',
                 padding: '0 8px',
                 height: 38,
                 outline: 'none',
-                width: '10px',
                 background: 'transparent',
               }}
               onFocus={handleFocus}
+              onChange={handleInputChange}
             />
             {selectedOption && (
               <Box
