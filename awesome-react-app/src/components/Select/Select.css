@@ -1,0 +1,4 @@
+.select-option:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}

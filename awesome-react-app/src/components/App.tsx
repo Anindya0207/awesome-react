@@ -18,6 +18,7 @@ const TextInput = lazy(() => import('./TextInput'));
 const ModalExample = lazy(() => import('./Modal'));
 const StopWatch = lazy(() => import('./StopWatch'));
 const TransferList = lazy(() => import('./TransferList'));
+const SelectExample = lazy(() => import('./Select'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -27,7 +28,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <TransferList />
+      <SelectExample />
     </Suspense>
   );
 };
