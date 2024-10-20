@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { Flex1, FlexColumn, FlexRow } from '../../Flex';
 import { Box, Text } from '../../BaseElements';
 import './Select.css';
@@ -43,7 +43,6 @@ const Select: React.FC<SelectProps> = (props) => {
     document.addEventListener(
       'click',
       (ev) => {
-        console.log(ev.target as any);
         const isValidClick = allowedClickSites.find(
           (s) => (ev.target as any)?.id.indexOf(s) > -1,
         );
@@ -83,13 +82,21 @@ const Select: React.FC<SelectProps> = (props) => {
     }
   };
   const handleOptionDelete = (option: any) => {
-    setSelectedOption((prev: any) =>
-      [...(prev || [])].filter(
-        (p) => p[valueAccessor] != option[valueAccessor],
-      ),
+    let updatedSelectedOptions = [...(selectedOption || [])].filter(
+      (p) => p[valueAccessor] != option[valueAccessor],
     );
+    setSelectedOption(() => updatedSelectedOptions);
     setFilteredOptions((prev: any) => [option, ...(prev || [])]);
     setShowOptions(true);
+    onChange && onChange(updatedSelectedOptions);
+  };
+  const clearInput = () => {
+    setShowOptions(true);
+    setSelectedOption(null);
+    if (onChange) {
+      multiple ? onChange([]) : onChange(null);
+    }
+    setFilteredOptions(sortedOptions);
   };
   return (
     <Flex1
@@ -102,11 +109,46 @@ const Select: React.FC<SelectProps> = (props) => {
         border="1px solid #000"
         borderRadius="4px"
         position="relative"
+        paddingRight={30}
       >
-        {selectedOption && !multiple && (
-          <Text height={40} padding="8px">
-            {selectedOption[labelAccessor]}
-          </Text>
+        {!multiple && (
+          <Fragment>
+            {selectedOption && (
+              <Text height={40} padding="8px">
+                {selectedOption[labelAccessor]}
+              </Text>
+            )}
+            <input
+              ref={inputRef}
+              id={`select-input-${id}`}
+              type="text"
+              name={id}
+              autoComplete="false"
+              style={{
+                border: 'none',
+                padding: '0 8px',
+                height: 38,
+                outline: 'none',
+                position: 'absolute',
+                width: '100%',
+                background: 'transparent',
+              }}
+              onFocus={handleFocus}
+            />
+            {selectedOption && (
+              <Box
+                position="absolute"
+                display="flex"
+                alignItems="center"
+                right="10px"
+                height="40px"
+                style={{ cursor: 'pointer' }}
+                onClick={clearInput}
+              >
+                ×
+              </Box>
+            )}
+          </Fragment>
         )}
         {!!multiple && (
           <FlexRow padding="0 6px" flexWrap="wrap">
@@ -126,8 +168,9 @@ const Select: React.FC<SelectProps> = (props) => {
                   margin="4px 2px"
                   ml={0}
                   padding="2px 8px"
-                  background="#ffc5c5"
+                  background="#ddd"
                   alignItems="center"
+                  className="delete-multiple"
                   justifyContent="center"
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleOptionDelete(option)}
@@ -152,26 +195,20 @@ const Select: React.FC<SelectProps> = (props) => {
               }}
               onFocus={handleFocus}
             />
+            {selectedOption && (
+              <Box
+                position="absolute"
+                display="flex"
+                alignItems="center"
+                right="10px"
+                height="40px"
+                style={{ cursor: 'pointer' }}
+                onClick={clearInput}
+              >
+                ×
+              </Box>
+            )}
           </FlexRow>
-        )}
-        {!multiple && (
-          <input
-            ref={inputRef}
-            id={`select-input-${id}`}
-            type="text"
-            name={id}
-            autoComplete="false"
-            style={{
-              border: 'none',
-              padding: '0 8px',
-              height: 38,
-              outline: 'none',
-              position: 'absolute',
-              width: '100%',
-              background: 'transparent',
-            }}
-            onFocus={handleFocus}
-          />
         )}
       </FlexColumn>
       {showOptions && (

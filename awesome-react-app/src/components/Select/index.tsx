@@ -25,6 +25,7 @@ const SelectExample: React.FC<{}> = () => {
         valueAccessor="value"
         labelAccessor="label"
         containerStyles={{ maxWidth: '600px' }}
+        onChange={(arg) => console.log(arg)}
       />
     </FlexColumn>
   );
