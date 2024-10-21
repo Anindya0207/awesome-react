@@ -1,0 +1,8 @@
+.select-option:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.delete-multiple:hover {
+  background-color: #ffc5c5;
+}
