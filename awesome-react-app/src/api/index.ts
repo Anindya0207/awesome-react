@@ -14,15 +14,6 @@ const api = {
       return err as any;
     }
   },
-  anotherAction: async (args: ApiRequest): Promise<ApiResponse> => {
-    try {
-      const response = await fetch(urls.fetchData);
-      const apiData = await response.json();
-      return apiData;
-    } catch (err) {
-      return err as any;
-    }
-  },
 };
 
 export default api;
