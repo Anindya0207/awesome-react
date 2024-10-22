@@ -60,9 +60,49 @@ button {
   margin-top: 20px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
   padding: 10px;
   text-align: center;
+}
+
+input[type='checkbox'] {
+  content: ' ';
+  margin-right: 10px;
+}
+input[type='checkbox']::after {
+  content: ' ';
+  height: 14px;
+  width: 13px;
+  border: 1px solid #b6b3b3;
+  display: block;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+  top: 4px;
+  background: #fff;
+  border-radius: 3px;
+  padding-left: 4px;
+  padding-top: 4px;
+}
+
+input[type='checkbox']:checked::after {
+  content: '✓';
+  height: 14px;
+  width: 13px;
+  border: 1px solid #000;
+  display: block;
+  position: relative;
+  left: -2px;
+  z-index: 1;
+  top: 4px;
+  background: #000;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 10px;
+  padding-left: 4px;
+  padding-top: 4px;
 }

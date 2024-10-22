@@ -21,6 +21,7 @@ const TransferList = lazy(() => import('./TransferList'));
 const SelectExample = lazy(() => import('./Select'));
 const InfiniteScroll = lazy(() => import('./InfiniteScroll'));
 const TestProdviderExample = lazy(() => import('./Context/TestProvider'));
+const NestedCheckBox = lazy(() => import('./NestedCheckBox'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -30,7 +31,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <TestProdviderExample />
+      <NestedCheckBox />
     </Suspense>
   );
 };
