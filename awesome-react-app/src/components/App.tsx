@@ -7,7 +7,6 @@ type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
 
 const App: React.FC<Props> = (props) => {
-  const { fetchData } = props;
   useEffect(() => {
     return () => {
       fetchData({ data: {} });
