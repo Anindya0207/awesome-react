@@ -9,9 +9,6 @@ export const createGrid = (rows, cols, containerId) => {
       cell.style.cssText = `display: flex; border: 1px solid #000;justify-content: center; align-items: center`;
       cell.dataset.rows = i;
       cell.dataset.cols = j;
-      if (shouldFill()) {
-        cell.textContent = j + 1;
-      }
       grid.appendChild(cell);
     }
   }

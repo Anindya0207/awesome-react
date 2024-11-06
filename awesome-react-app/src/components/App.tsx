@@ -22,6 +22,7 @@ const SelectExample = lazy(() => import('./Select'));
 const InfiniteScroll = lazy(() => import('./InfiniteScroll'));
 const TestProdviderExample = lazy(() => import('./Context/TestProvider'));
 const NestedCheckBox = lazy(() => import('./NestedCheckBox'));
+const AutoComplete = lazy(() => import('./AutoComplete'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -31,7 +32,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <NestedCheckBox />
+      <AutoComplete />
     </Suspense>
   );
 };
