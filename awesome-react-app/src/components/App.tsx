@@ -27,8 +27,8 @@ const TreeView = lazy(() => import('./FileTree'));
 const MenuApp = lazy(() => import('./MenuBar'));
 const Jiraboard = lazy(() => import('./Jiraboard'));
 const Pomodoro = lazy(() => import('./25-5'));
+const AnalogClock = lazy(() => import('./AnalogClock'));
 
-lazy(() => import('./FileTree'));
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
 
@@ -37,7 +37,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <Pomodoro />
+      <AnalogClock />
     </Suspense>
   );
 };
