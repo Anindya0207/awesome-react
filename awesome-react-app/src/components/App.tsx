@@ -25,6 +25,7 @@ const NestedCheckBox = lazy(() => import('./NestedCheckBox'));
 const AutoComplete = lazy(() => import('./AutoComplete'));
 const TreeView = lazy(() => import('./FileTree'));
 const MenuApp = lazy(() => import('./MenuBar'));
+const Jiraboard = lazy(() => import('./Jiraboard'));
 
 lazy(() => import('./FileTree'));
 type ReduxProps = ConnectedProps<typeof connector>;
@@ -35,7 +36,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <MenuApp />
+      <Jiraboard />
     </Suspense>
   );
 };

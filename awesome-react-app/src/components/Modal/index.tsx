@@ -3,6 +3,9 @@ import { Flex1, FlexColumn } from '../../Flex';
 import withModal, { WithModalInjectedProps } from './Modal';
 import { Button } from '../../BaseElements';
 
+interface OwnProps {
+  show: boolean;
+}
 const ModalContent: React.FC<{}> = () => {
   return (
     <Flex1 flexDirection="column">
@@ -16,7 +19,8 @@ const ModalContent: React.FC<{}> = () => {
     </Flex1>
   );
 };
-const ModalExample: React.FC<WithModalInjectedProps> = (props) => {
+
+const ModalExample: React.FC<WithModalInjectedProps & OwnProps> = (props) => {
   const { showModal, hideModal } = props;
   return (
     <Flex1 flexDirection="column">
@@ -35,4 +39,4 @@ const ModalExample: React.FC<WithModalInjectedProps> = (props) => {
   );
 };
 
-export default withModal({})(ModalExample);
+export default withModal<OwnProps>({})(ModalExample);

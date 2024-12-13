@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
-import { Flex1, FlexColumn } from '../../Flex';
-import { Box } from '../../BaseElements';
+import { Flex1, FlexColumn } from '../../../Flex';
+import { Box } from '../../../BaseElements';
 import { createPortal } from 'react-dom';
 
 interface ModalConfig {
