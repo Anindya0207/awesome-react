@@ -26,6 +26,7 @@ const AutoComplete = lazy(() => import('./AutoComplete'));
 const TreeView = lazy(() => import('./FileTree'));
 const MenuApp = lazy(() => import('./MenuBar'));
 const Jiraboard = lazy(() => import('./Jiraboard'));
+const Pomodoro = lazy(() => import('./25-5'));
 
 lazy(() => import('./FileTree'));
 type ReduxProps = ConnectedProps<typeof connector>;
@@ -36,7 +37,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <Jiraboard />
+      <Pomodoro />
     </Suspense>
   );
 };
