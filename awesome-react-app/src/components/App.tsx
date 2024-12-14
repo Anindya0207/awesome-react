@@ -25,10 +25,14 @@ const NestedCheckBox = lazy(() => import('./NestedCheckBox'));
 const AutoComplete = lazy(() => import('./AutoComplete'));
 const TreeView = lazy(() => import('./FileTree'));
 const MenuApp = lazy(() => import('./MenuBar'));
+
+// New Apps
+
 const Jiraboard = lazy(() => import('./Jiraboard'));
 const Pomodoro = lazy(() => import('./25-5'));
 const AnalogClock = lazy(() => import('./AnalogClock'));
 const DraggableGrid = lazy(() => import('./DraggableGrid'));
+const Carousal = lazy(() => import('./Carousal'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -38,7 +42,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <TreeView />
+      <Carousal />
     </Suspense>
   );
 };
