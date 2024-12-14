@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import './DraggableGrid.css';
 import { Flex1 } from '../../../Flex';
-import { Box } from '../../../BaseElements';
-import { flushSync } from 'react-dom';
 
 interface Props {
   cellHeight?: number;
