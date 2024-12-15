@@ -102,7 +102,6 @@ const TicTacToe: React.FC<{}> = () => {
       showWin([...op41, ...op42]);
     }
   };
-
   const showWin = (path: number[][]) => {
     for (let [i, j] of path) {
       const cell = document.getElementById(`cell-${i}-${j}`);
