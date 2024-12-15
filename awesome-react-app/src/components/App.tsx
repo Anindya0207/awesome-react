@@ -37,6 +37,7 @@ const Carousal = lazy(() => import('./Carousal'));
 const ColorMeGame = lazy(() => import('./ColorMeGame'));
 const TicTacToe = lazy(() => import('./TicTacToe'));
 const SnakeGame = lazy(() => import('./SnakeGame'));
+const Pagination = lazy(() => import('./Paginator'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -46,7 +47,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <SnakeGame />
+      <Pagination totalPages={100} />
     </Suspense>
   );
 };
