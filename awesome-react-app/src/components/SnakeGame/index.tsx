@@ -75,6 +75,10 @@ const SnakeGame: React.FC<Props> = (props) => {
     let [x, y] = getRandomPos();
     let cell = document.getElementById(`cell-${x}-${y}`);
     if (cell) {
+      if (cell.getAttribute('visited') == 'true') {
+        placeFood();
+        return;
+      }
       cell.style.background = 'orange';
       cell.style.border = '2px solid #000';
       cell.style.borderRadius = '50%';
