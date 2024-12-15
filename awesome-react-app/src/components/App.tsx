@@ -36,6 +36,7 @@ const Chessboard = lazy(() => import('./Chessboard'));
 const Carousal = lazy(() => import('./Carousal'));
 const ColorMeGame = lazy(() => import('./ColorMeGame'));
 const TicTacToe = lazy(() => import('./TicTacToe'));
+const SnakeGame = lazy(() => import('./SnakeGame'));
 
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
@@ -45,7 +46,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <TicTacToe />
+      <SnakeGame />
     </Suspense>
   );
 };
