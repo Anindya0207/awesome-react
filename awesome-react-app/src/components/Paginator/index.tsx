@@ -43,8 +43,8 @@ const Pagination: React.FC<Props> = (props) => {
     totalPages = 0,
     selectedPage = 1,
     onPageChange,
-    boundary = 1,
-    siblings = 1,
+    boundary = 2,
+    siblings = 2,
   } = props;
   const [blocks, setBlocks] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(selectedPage);
@@ -71,7 +71,7 @@ const Pagination: React.FC<Props> = (props) => {
     //firse samne se
     if (currentPage - siblings - 1 <= boundary + 1) {
       i = 0;
-      while (i < 2 * siblings + 3) {
+      while (i < totalInVicitiy - boundary - 1) {
         array[i] = { value: i + 1 };
         i++;
       }
@@ -81,7 +81,7 @@ const Pagination: React.FC<Props> = (props) => {
     else if (currentPage + siblings + 1 >= totalPages - boundary) {
       i = totalInVicitiy - 1;
       let j = 0;
-      while (i >= totalInVicitiy - (2 * siblings + 3)) {
+      while (i >= boundary + 1) {
         array[i] = { value: totalPages - j };
         i--;
         j++;
