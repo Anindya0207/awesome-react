@@ -1,0 +1,17 @@
+.popoverWrapper {
+  position: absolute;
+  top: 33px;
+  border: 1px solid #000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+  max-width: 500px;
+}
+
+.textLine {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

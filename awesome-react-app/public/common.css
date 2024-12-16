@@ -42,9 +42,7 @@ main {
   padding: 2rem;
   display: flex;
   flex: 1;
-  /* justify-content: center;
   flex-direction: column;
-  align-items: center; */
 }
 
 button {
@@ -60,4 +58,47 @@ button {
 }
 #actions {
   margin-top: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+  text-align: center;
+}
+
+input[type='checkbox'] {
+  content: ' ';
+  position: relative;
+}
+input[type='checkbox']::after {
+  content: ' ';
+  border: 1px solid #000;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  position: absolute;
+  top: 7px;
+  background: #fff;
+  left: -2px;
+  border-radius: 3px;
+}
+input[type='checkbox']:checked::after {
+  content: '✓';
+  border: 1px solid #000;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  position: absolute;
+  top: 7px;
+  background: #000;
+  color: #fff;
+  left: -2px;
+  border-radius: 3px;
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
