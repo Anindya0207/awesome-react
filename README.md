@@ -71,10 +71,10 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### Jira board
 ![jira](https://github.com/user-attachments/assets/dfe9ae13-cc0b-4e99-9b7e-ab02e0b03f7b)
 
-### Snake game
+### Color game
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4807fe56-a9bf-40c8-aa1c-b8cee2d29509)
 
-### Color game
+### Snake game
 ![snake-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/15a02690-28df-4884-acd2-75f553066681)
 
 
