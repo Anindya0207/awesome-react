@@ -46,6 +46,35 @@ export const Box = styled('div')<BoxProps>(
     typography,
   ),
 );
+export const Section = styled('section')<BoxProps>(
+  compose(
+    space,
+    color,
+    layout,
+    flexbox,
+    overflow,
+    border,
+    position,
+    shadow,
+    background,
+    typography,
+  ),
+);
+export const Form = styled('form')<BoxProps>(
+  compose(
+    space,
+    color,
+    layout,
+    flexbox,
+    overflow,
+    border,
+    position,
+    shadow,
+    background,
+    typography,
+  ),
+);
+
 // @ts-ignore
 export const Flexbox = styled(Box)<FlexboxProps>(flexbox);
 type TextProps = SpaceProps &
@@ -54,6 +83,9 @@ type TextProps = SpaceProps &
   BorderProps &
   TypographyProps;
 export const Text = styled('span')<TextProps>(
+  compose(space, color, layout, border, typography),
+);
+export const Label = styled('label')<TextProps>(
   compose(space, color, layout, border, typography),
 );
 type HeadingProps = SpaceProps & ColorProps & TypographyProps;
