@@ -46,3 +46,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Some of the sample projects
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4807fe56-a9bf-40c8-aa1c-b8cee2d29509)
+
+![snake-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/15a02690-28df-4884-acd2-75f553066681)
+
+![commitmap-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/175bc5ac-5421-4533-8d16-718a1a66bfa6)
+
+
+
+
