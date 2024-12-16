@@ -49,7 +49,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Fallback />}>
-      <Pomodoro />
+      <TreeView />
     </Suspense>
   );
 };

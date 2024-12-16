@@ -81,9 +81,9 @@ const reducer = (state: ReducerState, action: Action): ReducerState => {
 export const TreeProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, { nodes: treeData });
   return (
-    <TreeContext.Provider value={{ state, dispatch }}>
+    <TreeContext value={{ state, dispatch }}>
       {children}
-    </TreeContext.Provider>
+    </TreeContext>
   );
 };
 
