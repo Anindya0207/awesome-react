@@ -1,6 +1,8 @@
 import React, { useTransition, useEffect } from 'react';
-import { Flex1, FlexColumn } from '../../Flex';
-import MyForm from './MyForm';
+import { Flex1, FlexColumn, FlexRow } from '../../Flex';
+import MyForm from '../common/MyForm';
+import Spinner from '../common/Spinner';
+import { Text } from '../../BaseElements';
 
 // These will go to a new file. Just keeping here for ease of reading
 const delay = () => new Promise((res) => setTimeout(res, 1000));
@@ -48,7 +50,10 @@ const NewHookExample: React.FC<{}> = () => {
   return (
     <Flex1 flexDirection="column">
       {pendingInitialFetch && (
-        <FlexColumn>Please wait.. fetching initial data.. </FlexColumn>
+        <FlexRow alignItems="center">
+          <Text mr={3}>Please wait.. fetching initial data..</Text>
+          <Spinner />
+        </FlexRow>
       )}
       {!pendingInitialFetch && <MyForm onSubmit={onSubmit} />}
     </Flex1>

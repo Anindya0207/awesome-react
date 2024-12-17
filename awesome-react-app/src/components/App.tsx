@@ -1,16 +1,9 @@
-import React, {
-  lazy,
-  Suspense,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { lazy, Suspense } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import './App.css';
 import { fetchData } from '../actions';
-import { Flex1, FlexColumn, FlexRow } from '../Flex';
-import { Button, Text } from '../BaseElements';
+import { Text } from '../BaseElements';
+import Spinner from './common/Spinner';
 
 const Tabs = lazy(() => import('./Tabs'));
 const Polling = lazy(() => import('./Polling'));
@@ -48,8 +41,8 @@ const Fallback = () => <Text>Loading...</Text>;
 
 const App: React.FC<Props> = (props) => {
   return (
-    <Suspense fallback={<Fallback />}>
-      <TreeView />
+    <Suspense fallback={<Spinner />}>
+      <NewHookExample />
     </Suspense>
   );
 };

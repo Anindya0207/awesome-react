@@ -1,5 +1,5 @@
 import React, { useActionState, useOptimistic } from 'react';
-import { Flex1 } from '../../Flex';
+import { Flex1, FlexRow } from '../../Flex';
 import {
   Button,
   Form,
@@ -8,6 +8,7 @@ import {
   Section,
   Select,
 } from '../../BaseElements';
+import Spinner from './Spinner';
 
 interface Props {
   onSubmit: (initialState: any, formData: any) => any;
@@ -117,7 +118,13 @@ const MyForm: React.FC<Props> = ({ onSubmit }) => {
           <Button type="submit" disabled={isSubmitting}>
             Submit
           </Button>
-          {isSubmitting && <Label>Submitting.. please wait</Label>}
+
+          {isSubmitting && (
+            <FlexRow alignItems="center">
+              <Label mr={3}>Submitting.. please wait</Label>
+              <Spinner />
+            </FlexRow>
+          )}
         </Section>
       </Form>
     </Flex1>

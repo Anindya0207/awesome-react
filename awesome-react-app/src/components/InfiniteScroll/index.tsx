@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import InfiniteScroll from './InfiniteScroll';
+import InfiniteScroll from '../common/InfiniteScroll';
 
 const InfiniteScrollExample: React.FC<{}> = () => {
   const [tabledata, setTabledata] = useState<any>([]);
