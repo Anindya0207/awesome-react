@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Flex1, FlexColumn } from '../../Flex';
 import { Box, Text } from '../../BaseElements';

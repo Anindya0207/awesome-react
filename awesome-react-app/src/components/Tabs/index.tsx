@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Flex1 } from '../../Flex';
-import Tabs from './Tabs';
+import Tabs from '../common/Tabs';
 
 const TabExample: React.FC<{}> = (props) => {
   const [activeTab, setActiveTab] = useState(0);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from './Select';
+import Select from '../common/Select/Select';
 import { FlexColumn } from '../../Flex';
 
 const SelectExample: React.FC<{}> = () => {

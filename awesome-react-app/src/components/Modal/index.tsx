@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Flex1, FlexColumn } from '../../Flex';
-import withModal, { WithModalInjectedProps } from './Modal';
+import withModal, { WithModalInjectedProps } from '../common/Modal';
 import { Button } from '../../BaseElements';
 
 interface OwnProps {

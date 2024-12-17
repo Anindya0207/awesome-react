@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useMemo, useRef, useState } from 'react';
-import { Flex1, FlexColumn, FlexRow } from '../../Flex';
-import { Box, Text } from '../../BaseElements';
+import { Flex1, FlexColumn, FlexRow } from '../../../Flex';
+import { Box, Text } from '../../../BaseElements';
 import './Select.css';
 
 export interface SelectProps {

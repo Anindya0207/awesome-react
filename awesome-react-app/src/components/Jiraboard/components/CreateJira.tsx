@@ -4,7 +4,7 @@ import { Button, Input, Text, TextArea } from '../../../BaseElements';
 import { Flex1, FlexColumn, FlexRow } from '../../../Flex';
 import { useJira } from '..';
 import { Jira } from '../interface';
-import Select from '../../Select/Select';
+import Select from '../../common/Select/Select';
 import { EPICS, getRandomColor } from '../constants';
 
 let uuid = 1;
