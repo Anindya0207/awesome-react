@@ -1,28 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import logo from './logo.svg';
 import './App.css';
-import { anotherAsyncAction, fetchData } from '../actions';
+import { Text } from '../BaseElements';
+import { fetchData } from '../actions';
+import Spinner from './common/Spinner';
+
 type ReduxProps = ConnectedProps<typeof connector>;
 type Props = ReduxProps;
 
 const App: React.FC<Props> = (props) => {
-  useEffect(() => {
-    return () => {
-      fetchData({ data: {} });
-    };
-  });
-  return <div>Hey this is a cool React app made by Anindya</div>;
+  return <Suspense fallback={<Spinner />}></Suspense>;
 };
 
 const mapStateToProps = (state: any) => ({
   data: state.data,
-  asyncStatus: state.data,
 });
 
 const mapDispatchToProps = {
   fetchData,
-  anotherAsyncAction,
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
