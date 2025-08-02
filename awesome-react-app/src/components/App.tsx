@@ -24,7 +24,7 @@ const Jiraboard = lazy(() => import('./Jiraboard'));
 const Pomodoro = lazy(() => import('./25-5'));
 const AnalogClock = lazy(() => import('./AnalogClock'));
 const DraggableGrid = lazy(() => import('./DraggableGrid'));
-const TreeView = lazy(() => import('./FileTree'));
+const TreeView = lazy(() => import('./TreeView'));
 const Chessboard = lazy(() => import('./Chessboard'));
 const Carousal = lazy(() => import('./Carousal'));
 const ColorMeGame = lazy(() => import('./ColorMeGame'));
@@ -42,7 +42,7 @@ const Fallback = () => <Text>Loading...</Text>;
 const App: React.FC<Props> = (props) => {
   return (
     <Suspense fallback={<Spinner />}>
-      <NewHookExample />
+      <TreeView />
     </Suspense>
   );
 };

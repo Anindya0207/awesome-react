@@ -1,0 +1,8 @@
+.child-visible {
+  visibility: visible;
+}
+
+.child-hidden {
+  height: 0px;
+  visibility: hidden;
+}
